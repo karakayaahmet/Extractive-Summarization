@@ -10,8 +10,6 @@ import numpy as np
 import networkx as nx
 
 # Create your views here.
-def index(request):
-    return render(request,"index.html")
 
 def read_article(file_name):
     file = open(file_name, "r",encoding="utf-8")
@@ -97,3 +95,12 @@ def generate_summary(file_name, top_n=5):
 read_article("deneme.txt")
 
 generate_summary("deneme.txt", 2)
+
+def index(request):
+
+    if request.method == "POST":
+        ceviri = request.POST["ceviri_metin"]
+
+        
+
+    return render(request,"index.html")
