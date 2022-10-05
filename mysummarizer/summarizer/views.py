@@ -99,6 +99,7 @@ import networkx as nx
 def index(request):
     if request.method == "POST":
         ceviri = request.POST["ceviri_metin"]
+        kac_sayfa = request.POST["hedef_sayfa_no"]
 
         article = ceviri.split(". ")
         sentences = []
@@ -145,7 +146,7 @@ def index(request):
 
             return similarity_matrix
 
-        def generate_summary(ceviri, top_n=5):
+        def generate_summary(ceviri, kac_sayfa):
             stop_words = stopwords.words('turkish')
             summarize_text = []
 
@@ -163,7 +164,7 @@ def index(request):
             ranked_sentence = sorted(((scores[i], s) for i, s in enumerate(sentences)), reverse=True)
             #print("Indexes of top ranked_sentence order are ", ranked_sentence)
 
-            for i in range(top_n):
+            for i in range(kac_sayfa):
                 summarize_text.append(" ".join(ranked_sentence[i][1]))
             
             
@@ -174,8 +175,9 @@ def index(request):
 
 #read_article("deneme.txt")
 
-        ozet_metin = generate_summary(ceviri, 2)
-        return render(request,"index.html",{"ozet":ozet_metin,"ceviri_metin":ceviri})
+        ozet_metin = generate_summary(ceviri, int(kac_sayfa))
+        sayfa_sayisi = len(ozet_metin)
+        return render(request,"index.html",{"ozet":ozet_metin,"ceviri_metin":ceviri,"sayfa_no":sayfa_sayisi})
 
     return render(request,"index.html")
 
