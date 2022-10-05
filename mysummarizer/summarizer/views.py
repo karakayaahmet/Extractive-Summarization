@@ -97,9 +97,6 @@ import networkx as nx
 # generate_summary("deneme.txt", 2)
 
 def index(request):
-
-    ozet_metin = []
-
     if request.method == "POST":
         ceviri = request.POST["ceviri_metin"]
 
@@ -164,20 +161,20 @@ def index(request):
 
     # Step 4 - Sort the rank and pick top sentences
             ranked_sentence = sorted(((scores[i], s) for i, s in enumerate(sentences)), reverse=True)
-            print("Indexes of top ranked_sentence order are ", ranked_sentence)
+            #print("Indexes of top ranked_sentence order are ", ranked_sentence)
 
             for i in range(top_n):
                 summarize_text.append(" ".join(ranked_sentence[i][1]))
             
             
     # Step 5 - Offcourse,
-            print("Summarize Text: \n", ". ".join(summarize_text))
-            ozet_metin = str(summarize_text)
+            #print("Summarize Text: \n", ". ".join(summarize_text))
+            return ". ".join(summarize_text)
 # let's begin
 
 #read_article("deneme.txt")
 
-        generate_summary(ceviri, 5)
-        return render(request,"index.html",{"ozet":ozet_metin})
+        ozet_metin = generate_summary(ceviri, 2)
+        return render(request,"index.html",{"ozet":ozet_metin,"ceviri_metin":ceviri})
 
     return render(request,"index.html")
