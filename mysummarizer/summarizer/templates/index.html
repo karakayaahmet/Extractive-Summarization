@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% block content %}
 
+{% block content %}
 
 <div class="jumbotron jumbotron-fluid ">
     <div class="container bg-light">
@@ -12,23 +12,24 @@
     <div class="container my-3">
         <form method="POST">
             {% csrf_token %}
-        <div class="row">
-            
-            <div class="col-6">
-                <textarea name="ceviri_metin" id="ceviri_metin" class="form-control scrollable bg-light"
-                    style="height: 350px;" placeholder="Özetlemek İstediğiniz Metni Giriniz.." value="{{ceviri_metin}}">{{ceviri_metin}}</textarea>
+            <div class="row">
+
+                <div class="col-6">
+                    <textarea name="ceviri_metin" id="ceviri_metin" class="form-control scrollable bg-light"
+                        style="height: 350px;" placeholder="Özetlemek İstediğiniz Metni Giriniz.."
+                        value="{{ceviri_metin}}">{{ceviri_metin}}</textarea>
+                </div>
+                <div class="col-6">
+                    <textarea name="ozet" id="ozet" class="form-control scrollable bg-light" style="height: 350px;"
+                        value="{{ozet}}" disabled>{{ozet}}</textarea>
+                </div>
+
             </div>
-            <div class="col-6">
-                <textarea name="ozet" id="ozet" class="form-control scrollable bg-light"
-                    style="height: 350px;" value="{{ozet}}" disabled>{{ozet}}</textarea>
-            </div>
-        
-        </div>
     </div>
-<div class="container d-flex justify-content-center">
-    <button type="submit" class="btn btn-success">Özetle</button>
-</div>
-</form>
+    <div class="container d-flex justify-content-center">
+        <button type="submit" class="btn btn-success">Özetle</button>
+    </div>
+    </form>
 </div>
 
 

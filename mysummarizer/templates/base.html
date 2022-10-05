@@ -7,8 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'Css/bootstrap.min.css' %}">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <div class="container my-1">
+        <nav class="navbar navbar-light navbar-expand-sm" style="background-color: #dfe9f5;">
+            <a href="" class="navbar-brand">
+                <h1 class="ms-3"><i class="fa-solid fa-code"></i></h1>
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="{% url 'index' %}" class="nav-link"><i
+                            class="fa-solid fa-house"></i>Anasayfa</a></li>
+                <li class="nav-item"><a href="{% url 'kariyer' %}" class="nav-link"><i
+                            class="fa-solid fa-angles-right"></i>Kariyer</a></li>
+                <li class="nav-item"><a href="{% url 'egitim' %}" class="nav-link"><i
+                            class="fa-solid fa-award"></i>Eğitimler</a></li>
+                <li class="nav-item"><a href="{% url 'hakkimizda' %}" class="nav-link"><i
+                            class="fa-solid fa-share"></i>Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </div>
     {% block content %} {% endblock content %}
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>

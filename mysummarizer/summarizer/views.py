@@ -178,3 +178,12 @@ def index(request):
         return render(request,"index.html",{"ozet":ozet_metin,"ceviri_metin":ceviri})
 
     return render(request,"index.html")
+
+def egitim(request):
+    return render(request,"egitim.html")
+
+def kariyer(request):
+    return render(request,"kariyer.html")
+
+def hakkimizda(request):
+    return render(request,"hakkimizda.html")
